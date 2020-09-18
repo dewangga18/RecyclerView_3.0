@@ -1,6 +1,7 @@
 package www.smktelkom.sch.id.recyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,9 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void setMode(int selectedMode) {
         switch (selectedMode){
-            case R.id.action_list:break;
-            case R.id.action_grid:break;
+            case R.id.action_list:
+                showRecyclerList();
+                break;
+            case R.id.action_grid:
+                showRecycleGrid();
+                break;
             case R.id.action_cardview:break;
         }
+    }
+    private void showRecycleGrid(){
+        rvHeroes.setLayoutManager(new GridLayoutManager(this, 2));
+        GridHeroAdapter gridHeroAdapter = new GridHeroAdapter(list);
+        rvHeroes.setAdapter(gridHeroAdapter);
     }
 }
